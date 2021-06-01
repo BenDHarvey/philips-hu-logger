@@ -1,0 +1,8 @@
+{
+    "projects": {
+        "philips-hu-logger": {
+            "credentialSecret": false
+        }
+    },
+    "activeProject": "philips-hu-logger"
+}
