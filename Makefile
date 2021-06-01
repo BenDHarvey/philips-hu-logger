@@ -13,6 +13,7 @@
 # grep the version from the mix file
 #VERSION=$(shell ./version.sh)
 
+PWD=$(shell pwd)
 
 # HELP
 # This will output the help for each task
@@ -25,5 +26,5 @@ help: ## This help.
 .DEFAULT_GOAL := help
 
 
-run-local: ## Build the container
-	docker run -it -p 1880:1880 -v ./:/data --name nodered nodered/node-red
+run-local: ## Run project using docker and volume in project files
+	docker run -it -p 1880:1880 -v $(PWD)/:/data --name nodered nodered/node-red
