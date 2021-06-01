@@ -1,1 +1,1 @@
-[{"id":"3af82246.3634ae","type":"tab","label":"Flow 1","disabled":false,"info":""},{"id":"e345409a.c9641","type":"comment","z":"3af82246.3634ae","name":"","info":"test","x":150,"y":260,"wires":[]}]
+[{"id":"3af82246.3634ae","type":"tab","label":"Flow 1","disabled":false,"info":""},{"id":"4c2e0117.24a5d","type":"tab","label":"Flow 2","disabled":false,"info":""},{"id":"e345409a.c9641","type":"comment","z":"3af82246.3634ae","name":"","info":"test","x":150,"y":260,"wires":[]}]
