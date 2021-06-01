@@ -27,4 +27,4 @@ help: ## This help.
 
 
 run-local: ## Run project using docker and volume in project files
-	docker run -it -p 1880:1880 -v $(PWD)/:/data --name nodered nodered/node-red
+	docker run --rm -i -t -p 1880:1880 -v $(PWD)/:/data --name nodered nodered/node-red
