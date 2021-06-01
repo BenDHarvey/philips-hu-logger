@@ -1,7 +1,0 @@
-{
-    "projects": {
-        "philips-hu-logger": {
-            "credentialSecret": false
-        }
-    }
-}
