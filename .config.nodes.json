@@ -581,5 +581,57 @@
                 "file": "/data/node_modules/node-red-contrib-huemagic/huemagic/hue-rules.js"
             }
         }
+    },
+    "node-red-contrib-natsio": {
+        "name": "node-red-contrib-natsio",
+        "version": "0.6.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "natsio_sub": {
+                "name": "natsio_sub",
+                "types": [
+                    "natsio-sub"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-natsio",
+                "file": "/data/node_modules/node-red-contrib-natsio/natsio_sub.js"
+            },
+            "natsio_pub": {
+                "name": "natsio_pub",
+                "types": [
+                    "natsio-pub"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-natsio",
+                "file": "/data/node_modules/node-red-contrib-natsio/natsio_pub.js"
+            },
+            "natsio_req": {
+                "name": "natsio_req",
+                "types": [
+                    "nats-request"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-natsio",
+                "file": "/data/node_modules/node-red-contrib-natsio/natsio_req.js"
+            },
+            "natsio_server": {
+                "name": "natsio_server",
+                "types": [
+                    "natsio-server"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-natsio",
+                "file": "/data/node_modules/node-red-contrib-natsio/natsio_server.js"
+            }
+        }
     }
 }
