@@ -1,13 +1,58 @@
-#+TITLE: Readme
+#+TITLE: philips-hu-logger
 
-[{"id":"001788fffeb1199e","internalipaddress":"192.168.1.59"}]
+This project is for logging readings coming from philips hue sensors and pushing them to a nats subject. The project is based on the [[https://nodered.org/][node-red project]]. The node-red project provided a great starting point to get up and running quickly. This will likely end up getting replace but has so far served as a good low code solution.
 
-#+BEGIN_SRC
-[
-	{
-		"success": {
-			"username": "sRrJAjhfYx9rH6l6srwJxkfSEWDkiw-eJYanw9sT"
-		}
-	}
-]
+* Getting setup
+
+Before getting start some details need to be found from the philips hue system. These details SHOULD be keep semi-secret. Things like api keys will allow full access to your philips hue system. In my case this is only accessable on my local network. Therefore I am not to worried about keep these secret. YMMV on this so best treat the IP address and api key for the hue system as secret.
+
+** Generating an access key for your hue system
+
+*** Finding the hue bridge ip address
+
+The following will print the IP address of your philips hue bridge on your network. Take note of this address as it is what will be used to make api calls to the hue bridge
+
+#+BEGIN_SRC bash
+curl 'https://discovery.meethue.com/' \
+  -H 'authority: discovery.meethue.com' \
+  -H 'cache-control: max-age=0' \
+  -H 'upgrade-insecure-requests: 1' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36' \
+  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+  -H 'sec-gpc: 1' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-mode: navigate' \
+  -H 'sec-fetch-user: ?1' \
+  -H 'sec-fetch-dest: document' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  --compressed
 #+END_SRC
+
+#+RESULTS:
+| id":"001788fffeb1199e | 192.168.1.59 |
+
+*** Generating an API key
+
+#+BEGIN_SRC bash
+curl 'http://192.168.1.59/api' \
+  -H 'Connection: keep-alive' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36' \
+  -H 'Content-Type: text/plain;charset=UTF-8' \
+  -H 'Accept: */*' \
+  -H 'Sec-GPC: 1' \
+  -H 'Origin: http://192.168.1.59' \
+  -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
+  --data-raw '{"devicetype":"my_hue_app#iphone austen"}' \
+  --compressed \
+  --insecure
+#+END_SRC
+
+This will first return something like this.
+
+#+RESULTS:
+| error":{"type | address:"" | link button not pressed |
+
+You will need to press the button on the hue bridge to allow this request to work. Go do that and then make the api request again. This should then return a successful response with the api key
+
+*** Notes
+This project is based on the great template found [[https://github.com/binnes/Node-RED-Docker][here]]
